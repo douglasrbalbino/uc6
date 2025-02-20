@@ -1,0 +1,31 @@
+Calculo de Média de notas:
+
+- Defina a quantidade de notas diferentes que serão atribuidas;
+- Verifique se todas as notas atribuídas são compostas por números variáveis entre 0 a 10;
+- Some o valor total de todas as notas atribuídas;
+- Divida o valor total da soma pelo número de notas diferentes definidas anteriormente e terá a média das notas.
+
+#################################################################################################################
+
+PSEUDOCÓDIGO:
+
+INICIO
+
+  ESCREVER "Digite o total de notas"
+
+  LER totalDeNotas
+
+  PARA CADA NOTA EM totalDeNotas
+
+  	ESCREVER "Informe a nota N"
+
+	soma = soma + notaLida
+
+  FIMREPETICAO
+
+  media = soma / totalDeNotas
+
+  ESCREVA media
+
+FIM
+ 	

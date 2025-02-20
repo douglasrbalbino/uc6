@@ -1,0 +1,33 @@
+<script>
+    let notas =parseInt(prompt("Digite a quantidade de notas total:"));
+
+    //let soma = 0;
+    //let contador = 0;
+   
+    //while (contador <= notas) {
+    //    soma += parseFloat(prompt("Digite qual a nota " + contador));
+    //    console.log("Nota" + contador);  
+    //    contador++;
+   // }
+
+    //let media = soma / contador;
+
+    //console.log("a Média das " + contador + "notas é " + media);
+
+
+    let totalDeNotas = parseInt(prompt("Digite o total de notas"));
+
+    let soma = 0;
+    let contador= 1;
+
+    while(contador <= totalDeNotas) {
+        soma += parseFloat(prompt(`Informe a nota ${contador}`));
+        contador++;
+    }
+
+    let media = soma / totalDeNotas;
+
+    alert(media);
+
+
+</script>
