@@ -1,0 +1,30 @@
+<script>
+    const DESCONTO_10 = 0.10;
+    const CUPOM_100 = 100;
+    
+    let valor = Number(prompt("Insira o valor da compra:"));
+
+
+
+    if (valor >= CUPOM_100) {
+        valor = valor - ( valor * DESCONTO_10);
+        console.log("Você ganhou 10% de desconto!");
+        console.log(`O valor da sua compra ficou em R$ ${valor}`);
+    } else {
+        console.log(`Para obter o desconto, faça compras acima de R$ ${CUPOM_100}.`);
+        console.log(`O valor da sua compra ficou em R$ ${valor}`);
+    }
+
+    // Exemplo else if
+    let temperatura = Number(prompt("Digite a temperatura:"));
+
+    if (temperatura <= 10) {
+        console.log("Está muito frio.")
+    
+    } else if (temperatura <= 25) { // Posso adicionar quantos else if eu quiser
+        console.log("Clima agradável.")
+    } else {
+        console.log("Está muito quente.")
+    }
+
+</script>
