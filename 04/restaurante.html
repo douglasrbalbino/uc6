@@ -1,0 +1,30 @@
+<script>
+    // Restaurante vende dois tipos de marmita, completa e de carne;
+    // Ao comprar uma marmita completa, cada ingrediente subtrai 01 unidade;
+    // Ao comprar uma marmita de carne, o ingrediente Carnes subtrai 02 unidades;
+    // O site encerra as vendas quando QUALQUER ingrediente chegar a 00 unidades restantes;
+
+    let carnes = 7;
+    let arroz = 12;
+    let feijao = 8;
+
+    while (carnes > 0 && arroz > 0 && feijao > 0) { // Repete o laço enquanto os três ingredientes forem maior que 0;
+
+        let opcao = Number(prompt("Escolha a marmita: \n 1-Completa \n 2-Carnes")); // Pede para o cliente escolher qual marmita quer;
+
+        switch (opcao) {
+            case 1: // Opção 1 subtrai 01 unidade de cada um dos três ingredientes;
+                carnes--, arroz--, feijao--;
+                break;
+
+            case 2: // Opção 2 subtrai 02 unidades do ingrediente Carnes;
+                carnes -= 2;
+                break;
+
+            default:
+                console.log("Número inválido."); // Exibe a mensagem caso escolha alguma opção que não existe;
+        } 
+    }
+
+
+</script>
