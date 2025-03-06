@@ -1,0 +1,51 @@
+<script>
+    // Criando um array de produtos:
+    let produtos = ["Arroz", "Feijão", "Macarrão", "Açúcar"];
+    console.log("Produtos 1:", produtos);
+
+    let clientes = ["Donald", "Mickey", "Pluto"];
+
+    // Adicionando um produto para a lista:
+    produtos.push("Café"); // Adiciona ao final "PUSH"
+    produtos.unshift("Sal"); // Adiciona ao início  "UNSHIFT"
+    console.log("Produtos 2:", produtos)
+
+    // Remove um produto da lista:
+    produtos.pop(); // Remove do final "POP"
+    console.log("Produtos 3:", produtos)
+
+    // Adiciona um cliente para a lista:
+    clientes.push("Margarida");
+    console.log("Clientes:", clientes);
+
+    // Removendo um cliente da lista
+    clientes.shift(); // Remove o primeiro elemento da lista "SHIFT"
+    console.log("Clientes:", clientes);
+
+    // Percorrendo uma array com for
+    for (let i = 0; i < produtos.length; i++) {
+        console.log(`Produto ${i + 1}: ${produtos[i]}`);
+    }
+
+    // Percorrendo uma lista com forEach
+    clientes.forEach((c, i) => { // Aqui usei a letra C como parâmetro, mas poderia usar qualquer coisa
+        console.log(`Cliente ${i + 1}: ${c}`) // Aqui uso o mesmo parâmetro anteriormente
+    });
+
+        // Operações comuns
+        let precos = [25.50, 10.00, 40.75, 5.99];
+
+precos.reverse();
+precos.sort((a, b) => a - b);
+// console.log(precos.reverse());
+
+console.log(precos);
+
+precosAltos = precos.filter(p => p > 15); // Filtra na lista itens com um valor MAIOR que 15
+console.log(precosAltos);
+
+clientesComM = clientes.find(nome => nome.startsWith("M")); // Encontra na lista um item com  começo de letra M
+
+
+
+</script>

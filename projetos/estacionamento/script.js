@@ -3,6 +3,7 @@ let infoElementos = document.querySelectorAll(".resumo div");
 let vagas = [null, null, null, null, null, null, null, null, null, null];
 let totalHoras = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 let resultadoTexto = document.getElementById("resultado");
+let totalCarros = 0;
 
 elementosVagas.forEach((vaga, i) => {
     vaga.addEventListener("click", () => gerenciarVaga(i));
@@ -16,7 +17,7 @@ function gerenciarVaga(numeroDaVaga) {
         alert("Hora inválida");
         return;
     }
-    
+
     if (vagas[numeroDaVaga] === null) {
         vagas[numeroDaVaga] = hora;
         elementosVagas[numeroDaVaga].classList.add("ocupado");
@@ -27,13 +28,26 @@ function gerenciarVaga(numeroDaVaga) {
         }
         totalHoras[numeroDaVaga] += hora - vagas[numeroDaVaga];
         vagas[numeroDaVaga] = null;
+        totalCarros++; // Acrescenta uma quantidade de carro tota vez que a vaga voltar a ser NULL
         elementosVagas[numeroDaVaga].classList.remove("ocupado");
     }
-    atualizarInfo()
+    atualizarInfo();
 }
 
 function atualizarInfo() {
-    for (let i = 0; i < 10; i++) {
+    for(let i = 0; i < 10; i++) {
         infoElementos[i].innerText = `Vaga ${i + 1}: ${totalHoras[i]}h`
     }
 }
+
+function totalizar() {
+    let totalHorasDia = 0;
+    
+    for(let i = 0; i < 10; i++) {
+        totalHorasDia += totalHoras[i];        
+    }
+
+    let faturamento = totalHorasDia * 12;
+    resultadoTexto.innerText = `Total de horas: ${totalHorasDia}, Carros Atendidos: ${totalCarros}, Faturamento: R$${faturamento},00`;
+}
+
