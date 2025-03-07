@@ -1,0 +1,51 @@
+<script>
+    let numeros = [10, 20, 50, 30, 40];
+    let listaVazia = [];
+    let fruts = new Array("Maçã", "Banana", "Laranja");
+
+    // Acessando e modificando arrays
+    console.log(numeros[1]); // Exibe o valor: 20
+    numeros[2] = 70; // Modifica a posição 2 (50) para o valor 70
+    console.log(numeros); // Exibe a array: 10, 20, 50, 30, 40
+
+    // Manipuladores array
+    numeros.push(50); // Adiciona 50 ao FINAL
+    numeros.unshift(5); // Adiciona 5 ao INICIO
+    numeros.pop(); // Remove o ULTIMO elemento da array
+    numeros.shift(); // Remove o PRIMEIRO elemento da array
+    console.log(numeros.indexOf(70)); // Retorna a posição que tiver o valor 70 = 2
+    let maioresQue20 = numeros.filter(n => n > 20);
+
+    // Iterando sobre arrays
+    for (i = 0; i < numeros.length; i++) {
+        console.log(`Elemento ${i}: ${numeros[i]}`);
+    }
+
+    for (let x of numeros) {
+        console.log(`Elemento ${x}`);
+    }
+
+    numeros.forEach(function (valor, i) {
+        console.log(`Elemento ${i} ${valor}`)
+    })
+
+    // Explicando o forEach
+
+    // Arrow Function (por usar função anonima)
+    //array.forEach((elemento, indice, arrayCompleto) => {
+        // Código a ser executado para cada elemento
+    //});
+
+    // Array de Objetos
+    // produto = { nome: "Notebook", preco: 4500 } // Objeto
+
+    let produtos = [
+        { nome: "Notebook", preco: 4500 },
+        { nome: "Mouse", preco: 100 },
+        { nome: "Teclado", preco: 200 }
+    ];
+
+    console.log(produtos);
+</script>
+
+</script>
