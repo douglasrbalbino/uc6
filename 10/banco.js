@@ -2,7 +2,7 @@ class Conta {
     _saldo; // Saldo privado
     _titular; // Titular privado
 
-    constructor (_titular, saldoInicial) {
+    constructor (titular, saldoInicial) {
         this._titular =_titular;
         this._saldo = saldoInicial;
     }
@@ -45,6 +45,13 @@ class Conta {
 }
 
 class ContaPoupanca extends Conta {
+    _diaAniversario;
+
+    constructor(titular, saldoInicial, diaAniversario) {
+        super(titular, saldoInicial);
+        this._diaAniversario = diaAniversario;
+    }
+
     calcularRendimento() {
         this._saldo += this._saldo * 0.005;
     }

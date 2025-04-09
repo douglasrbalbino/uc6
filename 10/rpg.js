@@ -4,40 +4,111 @@ class Personagem {
     _pontosDeVida;
     _vivo; // valor booleano
 
-    constructor(nome, pontosDeVida) {
+    constructor(nome, forca, vida) {
         this._nome = nome;
-        this._forca = 30;
-        this._pontosDeVida = pontosDeVida;
+        this._forca = forca;
+        this._pontosDeVida = vida;
         this._vivo = true;
-
     }
 
-    atacar(alvo) {
-
+    atacar(inimigo) {
+        console.log(`${this._nome} atacou ${inimigo._nome}!`)
+        this.mostrarDados();
+        inimigo.tomarDano(this._forca);
     }
 
-    tomarDano(inimigo) {
-        
+    tomarDano(danoRecebido) {
+        if (danoRecebido > 0) {
+            this._pontosDeVida -= danoRecebido;
+            console.log(`${this._nome} sofreu um ataque de ${danoRecebido}!`);
+            this.mostrarDados();
+
+            if(this._pontosDeVida <= 0) {
+                this.morrer();
+            }
+        } else {
+            console.log("Valor do dano é inválido!");
+        }
     }
 
-    recuperarVida() {
-
+    recuperarVida(valorARecuperar) {
+        if (valorARecuperar > 0 && this._vivo) {
+            this._pontosDeVida += valorARecuperar;
+            console.log(`${this._nome} recuperou  ${valorARecuperar} de vida!`);
+            this.mostrarDados()
+        } else {
+            console.log("Valor de vida é inválido ou está morto!");
+        }
     }
 
     morrer() {
+        this._vivo = false;
+        console.log(`${this._nome} morreu!`)
+    }
 
+    mostrarDados() {
+        console.log(`O ${this._nome} está com ${this._pontosDeVida} de vida e tem ${this._forca} de força`);
     }
 }
 
 class Guerreiro extends Personagem {
     // Ao tomar dano, é reduzido em 5 por conta do escudo;
-
+    tomarDano(danoRecebido) {
+        danoRecebido -= 5; // pontos do escudo
+        super.tomarDano(danoRecebido);
+        console.log("Mas, esse dano foi reduzido em 5");
+    }
 }
 
 class Mago extends Personagem {
-    // Ao atacar, reduz 5 da própria vida, para fazer um ataque
+    atacar(inimigo) {
+        this._pontosDeVida -= 5;
+
+        if(this._pontosDeVida <= 0) {
+            // this.morrer();
+            console.log("Vida insuficiente para conjurar um ataque!");
+            this._pontosDeVida += 5;
+            return;            
+        }
+
+        super.atacar(inimigo);
+    }
 }
 
-let guerreiro1 = new Guerreiro("Ronaldo", 150);
-let mago1 = new Mago("Burro", 100);
-guerreiro1.atacar(mago1);
+class Arqueiro extends Personagem {
+    _totalDeFlechas;
+
+    constructor(nome, forca, vida, totalDeFlechas) {
+        super(nome, forca, vida);
+        this._totalDeFlechas = totalDeFlechas;
+    }
+
+    mostrarDados() {
+        super.mostrarDados();
+        this.totalFlechas();
+    }
+
+    totalFlechas() {
+        console.log(`${this._nome} possui ${this._totalDeFlechas} de flechas`);
+    }
+
+    atacar(inimigo) {
+        if (this._totalDeFlechas > 0) {
+            super.atacar(inimigo);
+            this._totalDeFlechas --;
+            this.totalFlechas();
+            return
+        } else {
+            console.log(`o ataque falhou, não possui flechas!`)
+            this.mostrarDados();
+        }
+    }
+
+    // Ao atacar, gasta uma flecha, se o total for zero não pode atacar
+}
+
+let personagem1 = new Mago("Gendalf", 200, 250);
+// personagem1.tomarDano(50);
+
+let personagem2 = new Arqueiro("Ronaldo", 100, 100, 1);
+personagem2.atacar(personagem1);
