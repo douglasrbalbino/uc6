@@ -18,7 +18,7 @@ class Funcionario {
     tempoDeEmpresa(anoAtual) {
         if (anoAtual > this._anoAdmissao) {
             let totalAnos = anoAtual - this._anoAdmissao;
-            console.log(`${this._nome} possui ${totalAnos} anos trabalhados!`)
+            console.log(`${this._nome} possui ${totalAnos} anos trabalhados!`);
         } else {
             console.log(`O "Ano Atual" inserido é inválido!`);
         }
