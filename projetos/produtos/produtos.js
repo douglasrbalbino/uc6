@@ -1,12 +1,12 @@
 import { BancoDeDados } from "./BancoDeDados.js";
 
 const ul = document.getElementById("listaProdutos");
-const produts = BancoDeDados.buscarTodos();
+const produtos = BancoDeDados.buscarTodos();
 
-if (produts.length === 0) {
-    ul.innerHTML = '<li>Nenhum produto cadastrado!</li>';
+if(produtos.length === 0) {
+    ul.innerHTML = '<li>Nenhum produto cadastrado!</li>'
 } else {
-    produts.forEach(p => {
+    produtos.forEach(p => {
         // cria e informa o texto dos itens da lista
         const li = document.createElement("li");         
         li.textContent = p.toString();
@@ -14,6 +14,7 @@ if (produts.length === 0) {
         // cria um botão "editar"
         const btnEditar = document.createElement("button");
         btnEditar.textContent = "Editar";
+        btnEditar.onclick = () => window.location.href = `index.html?id=${p.id}`;
 
         // cria um botão "excluir"
         const btnExcluir = document.createElement("button");
@@ -21,10 +22,10 @@ if (produts.length === 0) {
         btnExcluir.onclick = () => {
             BancoDeDados.excluir(p.id);
             window.location.reload();
-        }
+        };
 
 
-        li.append("   ", btnEditar, "   ", btnExcluir);
+        li.append(" ", btnEditar," ", btnExcluir);
         ul.appendChild(li);
     });
 }

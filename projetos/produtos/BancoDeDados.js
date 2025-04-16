@@ -22,7 +22,7 @@ export class BancoDeDados {
             const chave = localStorage.key(i);
             if(!isNaN(parseInt(chave))) {
                 const dados = JSON.parse(localStorage.getItem(chave));
-                produtos.push(Produto.fromJSON(dados)); // insere os produtos no array;
+                produtos.push(Produto.fromJSON(dados)); // isnere os produtos no array;
             }
         }
 
@@ -30,13 +30,21 @@ export class BancoDeDados {
         return produtos.sort((a, b) => a.id - b.id);
     }
 
-    buscarPorId(id) {
-
+    static buscarPorId(id) {
+        const produtoJson = localStorage.getItem(id);
+        const dados = JSON.parse(produtoJson);
+        return Produto.fromJSON(dados);
     }
 
     // UPDATE
-    atualizar(produtoAtualizado) {
-
+    static atualizar(produtoAtualizado) {
+        localStorage.setItem(produtoAtualizado.id, JSON.stringify({
+            id: produtoAtualizado.id,
+            nome: produtoAtualizado.nome,
+            preco: produtoAtualizado.preco,
+            peso: produtoAtualizado.peso,
+            validade: produtoAtualizado.validade
+        }));
     }
 
     //DELETE
